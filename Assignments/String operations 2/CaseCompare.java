@@ -1,0 +1,16 @@
+import java.util.Scanner;
+class CaseCompare
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the two string one in upper case and another one in lower case");
+		String str1=sc.next();
+		String str2=sc.next();
+		if(str1.compareToIgnoreCase(str2)==0)
+		{
+			System.out.println("this two strings are same");
+		}
+		else
+		System.out.println("this two strings are not same");
+	}}

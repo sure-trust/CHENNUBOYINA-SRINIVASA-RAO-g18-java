@@ -1,0 +1,17 @@
+import java.util.Scanner;
+class Unicode
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter a string  ");
+		String str=sc.next();
+		System.out.println("Enter the index of a string to find the unicode of that  character");
+		int index=sc.nextInt();
+		System.out.println("The unicode  of the given character is : "+str.codePointAt(index));
+		System.out.println("Enter the index of a string to find the unicode of the  before character ");
+		int index1=sc.nextInt();
+		System.out.println("The before  unicode of the given string : "+str.codePointBefore(index1));
+		System.out.println("The count of unicode values present in the string "+str.codePointCount(0,str.length()));
+	}
+}
