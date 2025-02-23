@@ -1,4 +1,4 @@
-class Appa
+class SpaceUpper
 {
 	public static void main(String args[])
 	{
