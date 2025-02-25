@@ -1,0 +1,8 @@
+class Join
+{
+	public static void main(String args[])
+	{
+		String str1=String.join(" srinu","hello","world","s");
+		System.out.println(str1);
+	}
+}

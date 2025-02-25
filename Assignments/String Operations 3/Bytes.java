@@ -1,0 +1,13 @@
+import java.util.Scanner;
+class Bytes 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		String str="hello world"; 
+		byte[] result=str.getBytes();
+		System.out.println(str+"  Enter the index to find the ascii code of that char");
+		int s=sc.nextInt();
+		System.out.println("The ascii code of the code is "+result[s]);
+	}
+}
