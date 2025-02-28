@@ -1,0 +1,16 @@
+import java.util.Scanner;
+class Main
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the name of the dog");
+		String name=sc.next();//local variables
+		System.out.println("enter the price of the dog");
+		float price=sc.nextFloat();
+		System.out.println("enter the age of  the dog");
+		int age=sc.nextInt();
+		Dogs obj=new Dogs(name,price,age);
+		obj.display();
+	}
+}
