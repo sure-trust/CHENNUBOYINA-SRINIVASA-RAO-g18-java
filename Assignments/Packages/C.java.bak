@@ -1,0 +1,16 @@
+package p1;
+public class C{
+String at;
+
+	public C()
+	{
+		System.out.println("C no arg constructor");
+	}
+	public C(String str){
+		at=str;
+		System.out.println("C string constructor"+at);
+	}
+	public void m1(){
+		System.out.println("C m1");
+	}
+}

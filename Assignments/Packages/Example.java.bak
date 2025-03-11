@@ -1,0 +1,12 @@
+package p1;
+class Example
+{
+	public static int a=20;
+	public int x=10;
+	public static void m1(){
+		System.out.println("i am srinivasa rao");
+	}
+	public void m2(){
+		System.out.println("i am ramadevi");
+	}
+}
