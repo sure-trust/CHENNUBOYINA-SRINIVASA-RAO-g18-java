@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+class Arraylist
+{
+	public static void main(String args[]){
+		ArrayList<String>arr=new ArrayList<>();
+		arr.add("one");
+		arr.add("two");
+		arr.add("three");
+		arr.add("five");
+		arr.add("six");
+		arr.add("seven");
+		arr.add("eight");
+		arr.add("nine");
+		arr.add("ten");
+		System.out.println(arr);
+		arr.add(3,"four");//add the element at 3rd index
+		System.out.println(arr);
+		System.out.println(arr.get(1));//access the element using index
+		System.out.println(arr.size());//print the size of the array
+		System.out.println(arr.isEmpty());//check is it empty or not it is a boolean
+		System.out.println("given element is found or not "+arr.contains("one"));
+		System.out.println("index of the given element "+arr.indexOf("five"));//retrive ththre index of the element
+		System.out.println("lase index of the given element "+arr.lastIndexOf("five"));//find the last occurance of the element index
+		System.out.println("set a element in a array "+arr.set(3,"seven"));//set the element at particular indedx
+		System.out.println("Remove the element in a arraylist "+arr.remove(5));//remove the element at given index
+		
+	}
+}
