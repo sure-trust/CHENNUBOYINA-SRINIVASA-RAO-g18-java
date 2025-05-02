@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px 30px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Login</h2>
+    <form action="login" method="post" id="loginForm">
+        <label for="service-login">Select Service:</label>
+        <select id="service-login" name="service" onchange="fetchCredentials()" required>
+            <option value="">--Select Service--</option>
+        </select>
+
+        <label for="username-login">Username:</label>
+        <input type="text" id="username-login" name="username" required>
+
+        <label for="password-login">Password:</label>
+        <input type="password" id="password-login" name="password" required>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        // Function to dynamically fetch services from the backend
+        function fetchServices() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "FetchCredentialsServlet", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var res = JSON.parse(xhr.responseText);
+                    var serviceDropdown = document.getElementById("service-login");
+                    res.services.forEach(function(service) {
+                        var option = document.createElement("option");
+                        option.value = service;
+                        option.textContent = service;
+                        serviceDropdown.appendChild(option);
+                    });
+                }
+            };
+
+            xhr.send();
+        }
+
+        // Function to fetch username and password for the selected service
+        function fetchCredentials() {
+            var service = document.getElementById("service-login").value;
+            if (service) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "FetchCredentialsServlet", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var res = JSON.parse(xhr.responseText);
+                        if (res.success) {
+                            document.getElementById("username-login").value = res.username;
+                            document.getElementById("password-login").value = res.password;
+                        } else {
+                            alert("No credentials found for the selected service.");
+                        }
+                    }
+                };
+
+                xhr.send("service=" + service);
+            }
+        }
+
+        // Initialize the services on page load
+        window.onload = function() {
+            fetchServices();
+        };
+    </script>
+
+</body>
+</html>
